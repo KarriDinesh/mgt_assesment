@@ -23,6 +23,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.14'
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y libxml2-dev libxslt-dev
+
+      - name: Upgrade pip
+        run: pip install --upgrade pip          
 
       # 🛠️ Local Build Section (Optional)
       # The following section in your workflow is designed to catch build issues early on the client side, before deployment. This can be helpful for debugging and validation. However, if this step significantly increases deployment time and early detection is not critical for your workflow, you may remove this section to streamline the deployment process.
@@ -73,4 +78,5 @@ jobs:
         with:
           app-name: 'assesment'
           slot-name: 'Production'
+
           
